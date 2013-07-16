@@ -2,7 +2,7 @@
   (:require [taoclj.mustache :as tpl]))
 
 
-(defn home-page [ctx]
+(defn index [ctx]
   [200 {} (tpl/render :index {:message "why hello!"})])
 
 

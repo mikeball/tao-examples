@@ -2,7 +2,7 @@
 
 
 (defn hello [ctx]
-  [200 {} "{\"message\":\"hello from simple api.\"}"])
+  [200 {} "{\"message\":\"hello from simple api\"}"])
 
 
 (defn not-found [ctx]
