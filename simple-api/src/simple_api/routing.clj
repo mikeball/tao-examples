@@ -6,4 +6,5 @@
 
 (defroutes routes :public 
                   ["/" {:get api/hello}]
-                  ["/items" {:get items/list}])
+                  ["/items" {:get items/list}]
+                  ["/items/:id" {:get items/detail}])

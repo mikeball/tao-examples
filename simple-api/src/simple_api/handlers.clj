@@ -1,8 +1,9 @@
-(ns simple-api.handlers)
+(ns simple-api.handlers
+  (:require [clojure.data.json :as json]))
 
 
 (defn hello [ctx]
-  [200 {} "{\"message\":\"hello from simple api\"}"])
+  [200 {} (json/write-str {:message "hello from simple api"})])
 
 
 (defn not-found [ctx]
