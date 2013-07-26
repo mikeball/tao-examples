@@ -1,11 +1,11 @@
 (ns simple-api.items.handlers
   (:require [taoclj.pure :as pure]
-            [clojure.data.json :as json]
+            [cheshire.core :refer [generate-string]]
             [simple-api.items.repo :as repo]))
 
 
 (defn list [_]
-  [200 {} (json/write-str (repo/get-list))])
+  [200 {} (generate-string (repo/get-list))])
 
 
 (defn detail [ctx]
@@ -13,4 +13,4 @@
         item (repo/get-item id)]
     (if-not item
       [404 {} (str "sorry item not found")]
-      [200 {} (json/write-str item)])))
+      [200 {} (generate-string item)])))

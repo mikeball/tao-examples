@@ -1,9 +1,9 @@
 (ns simple-api.handlers
-  (:require [clojure.data.json :as json]))
+  (:require [cheshire.core :refer [generate-string]]))
 
 
 (defn hello [ctx]
-  [200 {} (json/write-str {:message "hello from simple api"})])
+  [200 {} (generate-string {:message "hello from simple api"})])
 
 
 (defn not-found [ctx]
