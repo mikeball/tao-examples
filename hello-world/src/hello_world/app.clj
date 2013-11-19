@@ -27,7 +27,7 @@
                     ;; this parameter sets the default http content-type
                     ;; header which is used for all requests, unless over-ridden
                     ;; by in the response command map.
-                    "text/plain"
+                    "text/plain;charset=utf-8"
                     
                     ;; if no handler & method match is found in the routing table
                     ;; this not-found handler is invoked and it's result is returned.

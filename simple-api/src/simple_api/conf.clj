@@ -11,7 +11,7 @@
 
 (def dispatch
     (-> (gen-dispatch routes 
-                      "application/json" 
+                      "application/json;charset=utf-8" 
                       handlers/not-found
                       handlers/not-authorized)
         (wrap-user authenticate)

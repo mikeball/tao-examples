@@ -11,7 +11,7 @@
 
 (def dispatch
     (-> (gen-dispatch routes 
-                      "text/html" 
+                      "text/html;charset=utf-8" 
                       handlers/not-found
                       handlers/not-authorized)
         (wrap-user authenticate)
