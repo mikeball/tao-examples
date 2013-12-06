@@ -1,5 +1,5 @@
 (ns hello-world.app
-  (:require [taoclj.tao :refer [defroutes gen-dispatch]]))
+  (:require [taoclj.tao :refer [deftable gen-dispatch]]))
 
 ;; First we define a handler. In tao handlers are plain old functions
 ;; that take a single parameter and return a vector with 3 elements.
@@ -12,8 +12,8 @@
 ;;
 ;; Here we define a single route, marked as public that matches http requests
 ;; to the root path "/" and http method GET.
-(defroutes routes :public 
-                  ["/" {:get home-page}])
+(deftable routes :public 
+                 ["/" {:get home-page}])
 
 
 

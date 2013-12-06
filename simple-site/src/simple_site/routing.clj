@@ -4,7 +4,8 @@
             [simple-site.items.handlers :as items]))
 
 
-(defroutes routes :public
-                  ["/" {:get site/index}]
-                  ["/items" {:get items/index}]
-                  ["/items/:id" {:get items/detail}])
+(deftable routes
+    :public
+    ["/" {:get site/index}]
+    ["/items" {:get items/index}]
+    ["/items/:id" {:get items/detail}])
