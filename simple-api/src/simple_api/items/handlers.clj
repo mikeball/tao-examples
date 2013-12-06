@@ -12,5 +12,5 @@
   (let [id (pure/parse :int (-> ctx :params :id))
         item (repo/get-item id)]
     (if-not item
-      [404 {} (str "sorry item not found")]
+      [404 {:content-type "text/plain"} (str "sorry item not found")]
       [200 {} (generate-string item)])))
