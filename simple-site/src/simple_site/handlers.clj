@@ -1,13 +1,16 @@
 (ns simple-site.handlers
-  (:require [taoclj.mustache :as tpl]))
+  (:require [taoclj.mustache :refer [gen-renderer]]))
+
+
+(def render (gen-renderer "ui" "tpl" true))
 
 
 (defn index [ctx]
-  [200 {} (tpl/render :index {:message "why hello!"})])
+  [200 {} (render :index {:message "hello..."})])
 
 
 (defn not-found [ctx]
-  [404 {} (tpl/render :not-found {})])
+  [404 {} (render :not-found {})])
 
 
 (defn not-authorized [ctx]

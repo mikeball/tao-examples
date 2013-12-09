@@ -1,5 +1,5 @@
 (ns simple-site.routing
-  (:require [taoclj.tao :refer [defroutes]]
+  (:require [taoclj.tao :refer [deftable]]
             [simple-site.handlers :as site]
             [simple-site.items.handlers :as items]))
 
