@@ -1,10 +1,9 @@
 # Tao Examples
 
-A Clojure library designed to ... well, that part is up to you.
+A set of minimal example of using tao libraries together.
 
-## Usage
+Clone this repository to your local machine, then see README for each sub project for further information.
 
-FIXME
 
 ## License
 

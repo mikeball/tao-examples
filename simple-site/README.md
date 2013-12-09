@@ -1,13 +1,9 @@
-# simple-site
+# Simple Site
 
-A Clojure library designed to ... well, that part is up to you.
+A minimal example of a traditional web application.
 
-## Usage
+You may use the following shell command to start a server and launch a browser. This does require that you already have lein-ring installed or configured.
 
-FIXME
-
-## License
-
-Copyright © 2013 FIXME
-
-Distributed under the Eclipse Public License, the same as Clojure.
+```shell
+lein ring server
+```
