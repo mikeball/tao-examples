@@ -2,7 +2,7 @@
   (:require [taoclj.mustache :refer [gen-renderer]]))
 
 
-(def render (gen-renderer "ui" "tpl" true))
+(def render (gen-renderer "ui" "tpl" false))
 
 
 (defn index [ctx]
