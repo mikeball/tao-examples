@@ -1,5 +1,5 @@
 (ns simple-site.conf
-  (:require [taoclj.tao :refer [gen-dispatch wrap-user]]
+  (:require [taoclj.tao :refer [fn-dispatch]]
             [ring.middleware.params :refer [wrap-params]]
             [ring.middleware.keyword-params :refer [wrap-keyword-params]]
             [simple-site.auth :refer [authenticate]]
@@ -10,10 +10,10 @@
 
 
 (def dispatch
-    (-> (gen-dispatch routes 
-                      "text/html;charset=utf-8" 
-                      handlers/not-found
-                      handlers/not-authorized)
-        (wrap-user authenticate)
+    (-> (fn-dispatch {:routes routes
+                      :content-type "text/html;charset=utf-8" 
+                      :not-found handlers/not-found
+                      :not-authorized handlers/not-authorized
+                      :authenticate authenticate})
         (wrap-keyword-params)
         (wrap-params)))

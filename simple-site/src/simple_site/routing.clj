@@ -6,6 +6,6 @@
 
 (deftable routes
     :public
-    ["/" {:get site/index}]
-    ["/items" {:get items/index}]
-    ["/items/:id" {:get items/detail}])
+    ["/"         {:get site/index}]
+    ["/items"    {:get items/index}]
+    ["/items/:id"{:get items/detail}])
