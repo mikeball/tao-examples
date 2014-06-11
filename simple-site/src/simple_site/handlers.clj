@@ -14,4 +14,4 @@
 
 
 (defn not-authorized [ctx]
-  [403 {} "sorry, not authorized"])
+  [403 {} (render :not-authorized {})])
