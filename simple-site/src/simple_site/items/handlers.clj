@@ -11,7 +11,7 @@
 
 
 (defn detail [ctx]
-  (let [id (pure/parse :int (-> ctx :params :id))
+  (let [id   (pure/parse-int (-> ctx :params :id))
         item (repo/get-item id)]
     (if-not item
       [404 {} (str "sorry item not found")]
