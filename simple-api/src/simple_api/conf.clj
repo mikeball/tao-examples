@@ -1,5 +1,5 @@
 (ns simple-api.conf
-  (:require [taoclj.tao :refer [fn-dispatch]]
+  (:require [taoclj.tao.routing :refer [fn-dispatch]]
             [ring.middleware.params :refer [wrap-params]]
             [ring.middleware.keyword-params :refer [wrap-keyword-params]]
             [simple-api.auth :refer [authenticate]]
@@ -20,10 +20,10 @@
                   ; :not-authorized (fn [_] [403 {} "sorry, not authorized"])
 
 (def dispatch
-    (-> (fn-dispatch {:routes routes
-                      :content-type "application/json;charset=utf-8"
-                      :not-found handlers/not-found
-                      :not-authorized handlers/not-authorized
-                      :authenticate authenticate})
-        (wrap-keyword-params)
-        (wrap-params)))
+    (-> (fn-dispatch {:routes          routes
+                      :content-type    "application/json;charset=utf-8"
+                      :not-found       handlers/not-found
+                      :not-authorized  handlers/not-authorized
+                      :authenticate    authenticate})
+        wrap-keyword-params
+        wrap-params))

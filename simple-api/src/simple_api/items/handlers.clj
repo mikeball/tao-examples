@@ -1,30 +1,32 @@
 (ns simple-api.items.handlers
-  (:require [taoclj.pure :as pure]
+  (:require [taoclj.tao :refer [rsx->]]
+            [taoclj.pure :refer [parse-int]]
             [cheshire.core :refer [generate-string]]
-            [simple-api.items.repo :as repo]))
+            [simple-api.items.repo :as repo]
+            [simple-api.handlers :refer [not-found server-error]]))
 
 
-(defn list [_]
-  [200 {} (generate-string (repo/get-list))])
+(defn show-list [items ctx]
+  (cond (false? items)  (server-error ctx)
+        :else           [200 {} (generate-string items)]))
+
+(defn get-list [ctx]
+  (rsx-> (repo/get-items)
+         (show-list ctx)))
 
 
+
+(defn show-item [item ctx]
+  (cond (nil? item)    (not-found ctx)
+        (false? item)  (server-error ctx)
+        :else          [200 {} (generate-string item)]))
+
+
+; pipelined style handler
 (defn detail [ctx]
-  (let [id   (pure/parse-int (-> ctx :params :id))
-        item (repo/get-item id)]
-    (if-not item
-      [404 {:content-type "text/plain"} (str "sorry item not found")]
-      [200 {} (generate-string item)])))
+  (rsx-> (parse-int (-> ctx :params :id))
+         repo/lookup-item
+         (show-item ctx)))
 
 
 
-
-; (defh detail
-;   {:id [:int :required "ID is required"]}
-;   [ctx params]
-
-;   (if (params :errors)
-;     [400 {} (generate-string (params :errors))]
-;     (let [item (repo/get-item (params :values :id))]
-;       (if-not item
-;         [404 {:content-type "text/plain"} (str "sorry item not found")]
-;         [200 {} (generate-string item)]))))
