@@ -1,5 +1,5 @@
 (ns hello-world.app
-  (:require [taoclj.tao :refer [deftable fn-dispatch]]))
+  (:require [taoclj.tao.routing :refer [deftable fn-dispatch]]))
 
 
 ;; First we define a handler. In tao handlers are plain old functions
@@ -7,7 +7,7 @@
 (defn home-page [_] [200 {} "hello tao!"])
 
 
-;; The defroutes macro builds a routing table from a sequence 
+;; The defroutes macro builds a routing table from a sequence
 ;; of alternating keyword(s) and vector(s). The keywords are user roles
 ;;
 ;;    [path-pattern methods-map]
@@ -15,7 +15,7 @@
 ;; Here we define a single route, marked as public that matches http requests
 ;; to the root path "/" and http method GET.
 (deftable routes
-    :public 
+    :public
     ["/" {:get home-page}])
 
 
@@ -33,4 +33,4 @@
 
 
 
-  
+
